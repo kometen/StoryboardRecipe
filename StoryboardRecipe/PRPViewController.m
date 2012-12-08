@@ -1,8 +1,8 @@
 //
 //  PRPViewController.m
-//  StoryboardRecipe
+//  Recipes
 //
-//  Created by Claus Guttesen on 19/11/12.
+//  Created by Claus Guttesen on 04/11/12.
 //  Copyright (c) 2012 Claus Guttesen. All rights reserved.
 //
 
@@ -14,16 +14,19 @@
 
 @implementation PRPViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.formatter = [[NSNumberFormatter alloc] init];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.title = self.recipe.title;
+    self.directionsView.text = self.recipe.directions;
+    self.prepTime.text = [self.formatter stringFromNumber:self.recipe.preparationTime];
+    if (self.recipe.image) {
+        self.imageView.image = self.recipe.image;
+    }
 }
 
 @end

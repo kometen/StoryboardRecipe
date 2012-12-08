@@ -7,12 +7,15 @@
 //
 
 #import "PRPAppDelegate.h"
+#import "PRPRecipesListViewController.h"
+#import "PRPRecipesSource.h"
 
 @implementation PRPAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    PRPRecipesListViewController *controller = (PRPRecipesListViewController *)navigationController.topViewController;
+    controller.dataSource = [[PRPRecipesSource alloc] init];
     return YES;
 }
 							
